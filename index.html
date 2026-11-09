@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f2e9">
+  <meta name="description" content="Give the stamps tucked away in your drawers a new purpose. Discover how stamp donations can support charitable causes.">
+  <title>Good Postage — Give your stamps a second life</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #193b35;
+      --muted: #64736a;
+      --paper: #f6f2e9;
+      --white: #fffdf8;
+      --green: #245c4a;
+      --green-dark: #194538;
+      --orange: #e98a55;
+      --line: #dedfd3;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: "Trebuchet MS", Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      line-height: 1.6;
+    }
+    a { color: inherit; }
+    a:focus-visible, button:focus-visible { outline: 3px solid var(--orange); outline-offset: 4px; }
+    .wrap { width: min(1120px, calc(100% - 48px)); margin-inline: auto; }
+
+    header { padding: 25px 0; }
+    .nav { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 800; letter-spacing: -.04em; font-size: 1.2rem; }
+    .brand-mark { width: 35px; height: 35px; display: grid; place-items: center; border: 1.5px solid var(--green); color: var(--green); transform: rotate(-7deg); font-size: 1.1rem; }
+    .nav-links { display: flex; align-items: center; gap: 29px; font-size: .9rem; }
+    .nav-links a { text-decoration: none; }
+    .nav-links a:hover { text-decoration: underline; text-underline-offset: 4px; }
+    .nav-cta { padding: 10px 17px; border: 1px solid var(--green); border-radius: 3px; font-weight: 700; }
+
+    .hero { display: grid; grid-template-columns: 1.03fr .97fr; align-items: center; gap: 62px; padding: 63px 0 96px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 9px; color: var(--green); text-transform: uppercase; letter-spacing: .14em; font-size: .72rem; font-weight: 800; }
+    .eyebrow::before { content: ""; width: 24px; height: 1px; background: var(--orange); }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { max-width: 580px; margin: 18px 0 20px; font: 500 clamp(3rem, 6vw, 5.2rem)/.99 var(--serif); letter-spacing: -.055em; }
+    h1 em { color: var(--green); font-weight: 400; }
+    .hero-copy { max-width: 480px; margin-bottom: 28px; color: var(--muted); font-size: 1.05rem; }
+    .button { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 49px; padding: 0 21px; border: 1px solid var(--green); border-radius: 3px; background: var(--green); color: white; text-decoration: none; font-weight: 700; transition: background .2s, transform .2s; }
+    .button:hover { background: var(--green-dark); transform: translateY(-2px); }
+    .button .arrow { font-size: 1.2rem; line-height: 1; }
+    .hero-note { margin: 15px 0 0; color: var(--muted); font-size: .79rem; }
+
+    .art { position: relative; min-height: 420px; display: grid; place-items: center; }
+    .art::before { content: ""; position: absolute; width: min(390px, 85%); aspect-ratio: 1; background: #e5e8d9; border-radius: 50%; }
+    .postcard { position: relative; width: min(365px, 86%); aspect-ratio: 1.18; padding: 25px; background: #fffdf8; box-shadow: 0 22px 55px #30453820; transform: rotate(-6deg); }
+    .postcard::before { content: ""; position: absolute; inset: 12px; border: 1px solid #d8d8ca; pointer-events: none; }
+    .postcard-inner { position: relative; height: 100%; display: grid; grid-template-columns: 1fr 105px; grid-template-rows: 1fr auto; gap: 12px; }
+    .postcard-art { display: grid; place-items: center; overflow: hidden; background: #dce5d8; }
+    .postcard-art svg { width: 100%; height: 100%; }
+    .stamp { align-self: start; padding: 7px; border: 1px dashed #be7c53; color: #854d36; text-align: center; font: 700 .59rem/1.2 var(--sans); transform: rotate(4deg); }
+    .stamp .stamp-image { display: grid; place-items: center; aspect-ratio: 1; margin-bottom: 4px; background: #f1d8b8; font: 1.7rem var(--serif); }
+    .postmark { position: absolute; right: 2px; top: 104px; width: 86px; height: 50px; border-top: 1px solid #9a8170; border-bottom: 1px solid #9a8170; transform: rotate(-9deg); opacity: .7; }
+    .postmark::before, .postmark::after { content: ""; position: absolute; left: 0; right: 0; top: 14px; border-top: 1px solid #9a8170; box-shadow: 0 8px #9a8170; }
+    .postcard-caption { grid-column: 1 / -1; color: var(--green); font: italic 1rem var(--serif); }
+    .spark { position: absolute; color: var(--orange); font-size: 2rem; }
+    .spark.one { top: 34px; right: 8%; }
+    .spark.two { bottom: 43px; left: 6%; font-size: 1.3rem; }
+    .art-label { position: absolute; right: 0; bottom: 36px; padding: 10px 14px; background: var(--white); box-shadow: 0 8px 22px #30453814; color: var(--green); font: italic .95rem var(--serif); transform: rotate(3deg); }
+
+    .purpose { padding: 67px 0 72px; background: var(--green); color: var(--white); }
+    .purpose-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 75px; align-items: start; }
+    .purpose .eyebrow { color: #d6e0cb; }
+    .purpose h2 { margin: 14px 0; font: 500 clamp(2.2rem, 4vw, 3.35rem)/1.08 var(--serif); letter-spacing: -.04em; }
+    .purpose p { max-width: 620px; margin: 4px 0 0; color: #e1e9df; font-size: 1.03rem; }
+    .purpose .fine { margin-top: 15px; color: #c5d6ca; font-size: .82rem; }
+
+    .steps { padding: 91px 0 96px; }
+    .section-heading { max-width: 560px; margin-bottom: 47px; }
+    .section-heading h2 { margin: 13px 0 12px; font: 500 clamp(2.3rem, 4vw, 3.5rem)/1.05 var(--serif); letter-spacing: -.045em; }
+    .section-heading p { color: var(--muted); }
+    .step-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    .step { padding: 23px 20px 20px 0; border-top: 1px solid var(--line); }
+    .step-number { color: var(--orange); font: italic 1.3rem var(--serif); }
+    .step h3 { margin: 17px 0 8px; font: 500 1.48rem var(--serif); }
+    .step p { margin: 0; color: var(--muted); font-size: .94rem; }
+
+    .donate { padding: 70px 0; background: #e8e9dc; }
+    .donate-panel { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 35px; padding: 34px 40px; border: 1px solid #d3d8c8; background: #f8f6ef; }
+    .donate-panel h2 { margin: 0 0 8px; font: 500 clamp(1.8rem, 3vw, 2.5rem)/1.1 var(--serif); letter-spacing: -.03em; }
+    .donate-panel p { margin: 0; color: var(--muted); }
+    .donate-note { margin: 17px 0 0; color: var(--muted); font-size: .78rem; }
+
+    footer { padding: 27px 0; }
+    .footer-row { display: flex; align-items: center; justify-content: space-between; gap: 20px; color: var(--muted); font-size: .8rem; }
+    .footer-row p { margin: 0; }
+    .footer-brand { color: var(--ink); font-weight: 800; letter-spacing: -.03em; }
+
+    @media (max-width: 760px) {
+      .wrap { width: min(100% - 36px, 560px); }
+      .nav-links { gap: 14px; }
+      .nav-links a:not(.nav-cta) { display: none; }
+      .hero { grid-template-columns: 1fr; gap: 12px; padding: 47px 0 60px; }
+      .hero-copy { max-width: 530px; }
+      .art { min-height: 345px; }
+      .postcard { width: min(330px, 83%); }
+      .purpose-grid { grid-template-columns: 1fr; gap: 12px; }
+      .steps { padding: 68px 0; }
+      .step-grid { grid-template-columns: 1fr; gap: 13px; }
+      .step { padding: 18px 0; }
+      .step h3 { margin-top: 9px; }
+      .donate-panel { grid-template-columns: 1fr; padding: 28px 23px; }
+      .donate-panel .button { justify-self: start; }
+    }
+    @media (max-width: 420px) {
+      .wrap { width: calc(100% - 30px); }
+      .art { min-height: 300px; }
+      .art-label { right: 0; bottom: 16px; }
+      .footer-row { align-items: flex-start; flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav wrap" aria-label="Main navigation">
+      <a class="brand" href="#top" aria-label="Good Postage home"><span class="brand-mark" aria-hidden="true">✳</span> good postage</a>
+      <div class="nav-links">
+        <a href="#why">Why stamps?</a>
+        <a href="#how">How it works</a>
+        <a class="nav-cta" href="#donate">Donate stamps <span aria-hidden="true">↗</span></a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero wrap" aria-labelledby="hero-title">
+      <div>
+        <span class="eyebrow">A little thing that goes a long way</span>
+        <h1 id="hero-title">Your old stamps can make <em>new good.</em></h1>
+        <p class="hero-copy">That tin of stamps in the drawer? It could be the start of something meaningful. Give your collection a second life by donating it to support charitable causes.</p>
+        <a class="button" href="#how">See how to donate <span class="arrow" aria-hidden="true">→</span></a>
+        <p class="hero-note">Used, unused, old or new—every collection has a story.</p>
+      </div>
+      <div class="art" role="img" aria-label="Illustration of a vintage postcard with a flower and postage stamp">
+        <span class="spark one" aria-hidden="true">✳</span>
+        <span class="spark two" aria-hidden="true">✳</span>
+        <div class="postcard">
+          <div class="postcard-inner">
+            <div class="postcard-art" aria-hidden="true">
+              <svg viewBox="0 0 240 180" xmlns="http://www.w3.org/2000/svg">
+                <rect width="240" height="180" fill="#dce5d8"/>
+                <circle cx="177" cy="43" r="23" fill="#edc992"/>
+                <path d="M0 142 Q50 94 102 139 T240 121 V180 H0Z" fill="#b9cbb4"/>
+                <path d="M0 154 Q64 117 126 153 T240 139 V180 H0Z" fill="#92ad9b"/>
+                <path d="M119 170 C119 135 122 104 126 73" fill="none" stroke="#496e53" stroke-width="5" stroke-linecap="round"/>
+                <path d="M123 119 Q91 99 87 121 Q100 137 123 126 M126 104 Q153 81 162 101 Q151 117 126 111" fill="#789879"/>
+                <g transform="translate(128 67)">
+                  <ellipse rx="8" ry="17" cy="-13" fill="#e98a55"/><ellipse rx="8" ry="17" cy="13" fill="#e98a55"/>
+                  <ellipse rx="8" ry="17" cx="-13" fill="#e98a55" transform="rotate(90 -13 0)"/><ellipse rx="8" ry="17" cx="13" fill="#e98a55" transform="rotate(90 13 0)"/>
+                  <circle r="8" fill="#e9c678"/>
+                </g>
+                <path d="M35 164 Q43 143 50 164 M52 165 Q61 139 68 165 M184 150 Q191 128 198 150" fill="none" stroke="#f3e7c7" stroke-width="3" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="stamp"><div class="stamp-image" aria-hidden="true">✿</div>GOOD THINGS<br>GROW</div>
+            <div class="postmark" aria-hidden="true"></div>
+            <div class="postcard-caption">A small piece of paper. A bigger purpose.</div>
+          </div>
+        </div>
+        <div class="art-label">Ready for a new journey</div>
+      </div>
+    </section>
+
+    <section class="purpose" id="why" aria-labelledby="purpose-title">
+      <div class="purpose-grid wrap">
+        <div>
+          <span class="eyebrow">A thoughtful way to give</span>
+          <h2 id="purpose-title">Small stamps.<br>Big-hearted impact.</h2>
+        </div>
+        <div>
+          <p>Collectible stamps can be of interest to collectors, and donated collections may be sold or otherwise used to raise funds for charitable work. Instead of letting yours gather dust, pass them along to an organization that can put them to good use.</p>
+          <p class="fine">The value and use of donated stamps varies. Please check with your chosen charity before sending a collection.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="steps wrap" id="how" aria-labelledby="steps-title">
+      <div class="section-heading">
+        <span class="eyebrow">Three simple steps</span>
+        <h2 id="steps-title">Make room for good.</h2>
+        <p>Getting your stamps ready to donate is easy. A little care helps them arrive in the best possible condition.</p>
+      </div>
+      <div class="step-grid">
+        <article class="step">
+          <span class="step-number">01 / Gather</span>
+          <h3>Find your collection</h3>
+          <p>Look through albums, drawers and old correspondence. Both used and unused stamps may be welcome—ask your chosen charity what it accepts.</p>
+        </article>
+        <article class="step">
+          <span class="step-number">02 / Protect</span>
+          <h3>Pack them with care</h3>
+          <p>Keep stamps dry and secure. If they're on envelopes, check whether the charity wants them left on paper or trimmed first.</p>
+        </article>
+        <article class="step">
+          <span class="step-number">03 / Pass it on</span>
+          <h3>Choose a charity</h3>
+          <p>Contact a charity or stamp-collecting fundraiser directly to confirm its mailing address, accepted stamps and any packing instructions.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="donate" id="donate" aria-labelledby="donate-title">
+      <div class="donate-panel wrap">
+        <div>
+          <h2 id="donate-title">Ready to give your stamps a new home?</h2>
+          <p>Find a charity that accepts stamp donations, then check its guidelines before you mail your collection.</p>
+          <p class="donate-note">This page is an independent guide and does not collect or receive stamp donations.</p>
+        </div>
+        <a class="button" href="https://www.google.com/search?q=charities+that+accept+stamp+donations" target="_blank" rel="noopener noreferrer">Find a charity <span class="arrow" aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-row wrap">
+      <p class="footer-brand">✳ good postage</p>
+      <p>Give what you have. Pass on a little good.</p>
+    </div>
+  </footer>
+</body>
+</html>
